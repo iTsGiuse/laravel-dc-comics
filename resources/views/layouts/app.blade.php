@@ -26,10 +26,13 @@
                     <div class="d-flex">
                         <ul>
                             <li>
-                                <a href="http://">Movies</a>
+                                <a href="/">Home</a>
                             </li>
                             <li>
-                                <a href="http://">Aggiungi</a>
+                                <a href="/movies">Movies</a>
+                            </li>
+                            <li>
+                                <a href="/">Aggiungi</a>
                             </li>
                         </ul>
                     </div>
@@ -38,7 +41,7 @@
         </div>
     </header>
     <main>
-        
+        @yield('main')
     </main>
 
 </body>
