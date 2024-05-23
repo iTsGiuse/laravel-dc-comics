@@ -32,7 +32,7 @@
                                 <a href="/movies">Movies</a>
                             </li>
                             <li>
-                                <a href="/">Aggiungi</a>
+                                <a href="/movies/create">Aggiungi</a>
                             </li>
                         </ul>
                     </div>

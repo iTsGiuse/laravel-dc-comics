@@ -20,7 +20,7 @@ class MovieController extends Controller
             'movies' => $movies
         ];
             
-        return view('movie.showMovie', $data);
+        return view('movie.showAllMovie', $data);
     
     }
 
@@ -31,7 +31,7 @@ class MovieController extends Controller
      */
     public function create()
     {
-        //
+        return view('movie.createMovie');
     }
 
     /**
@@ -42,7 +42,19 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $formData= $request->all();
+        
+        $newMovie = new movie();
+        $newMovie->title = $formData['title'];
+        $newMovie->description = $formData['description'];
+        $newMovie->thumb = $formData['thumb'];
+        $newMovie->price = $formData['price'];
+        $newMovie->series = $formData['series'];
+        $newMovie->sale_date = $formData['sale_date'];
+        $newMovie->type = $formData['type'];
+        $newMovie->save();
+
+        return redirect()->route('movies.show', ['movie' => $newMovie->id]);
     }
 
     /**
@@ -53,7 +65,13 @@ class MovieController extends Controller
      */
     public function show($id)
     {
-        //
+        $movies = movie::find($id);
+
+        $data = [
+            'movies' => $movies
+        ];
+
+        return view('movie.showSingleMovie', $data);
     }
 
     /**

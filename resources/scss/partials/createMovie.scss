@@ -1,0 +1,8 @@
+#create-movie{
+    .col:nth-child(1){
+        text-align: start;
+    }
+    .col:nth-last-child(1){
+        text-align: end;
+    }
+}
