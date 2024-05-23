@@ -18,20 +18,20 @@
 <body>
     <header>
         <div class="container">
-            <div class="row justify-content-between align-items-center">
+            <div class="row justify-content-between align-items-center py-2">
                 <div class="col-2">
-                    <img src="{{Vite::asset('resources/img/dc-logo.png') }}" alt="">
+                    <img src="{{Vite::asset('resources/img/dc-logo.png') }}" href="/" alt="">
                 </div>
-                <div class="col-2">
+                <div class="col-4">
                     <div class="d-flex">
                         <ul>
-                            <li>
+                            <li class="nav-item">
                                 <a href="/">Home</a>
                             </li>
-                            <li>
+                            <li class="nav-item">
                                 <a href="/movies">Movies</a>
                             </li>
-                            <li>
+                            <li class="nav-item">
                                 <a href="/movies/create">Aggiungi</a>
                             </li>
                         </ul>

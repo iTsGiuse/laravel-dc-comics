@@ -14,6 +14,13 @@
                     </div>
                 </div>
             </div>
+            <div class="row mt-5">
+                <div class="col text-center">
+                    <form action="/movies">
+                        <button type="submit">Torna indietro</button>
+                    </form>
+                </div>
+            </div>
         </div>
 
     </section>
