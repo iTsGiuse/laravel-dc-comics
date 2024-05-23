@@ -3,7 +3,8 @@
 @section('main')
     <section id="create-movie">
         <div class="container">
-            <form action="store" method="POST">
+            <form action="{{ route('movies.store') }}" method="POST">
+                @csrf
                 <div class="row mt-5">
                     <div class="col">
                         <label for="title">Inserisci il titolo</label>
@@ -17,7 +18,7 @@
                         <label for="description">Inserisci la descrizione</label>
                     </div>
                     <div class="col">
-                        <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                        <textarea name="description" id="description" type="text" cols="30" rows="10"></textarea>
                     </div>
                 </div>
                 <div class="row mt-3">
@@ -30,10 +31,10 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col">
-                        <label for="number">Inserisci il prezzo</label>
+                        <label for="price">Inserisci il prezzo</label>
                     </div>
                     <div class="col">
-                        <input type="number" name="number" id="number" step="0.01">
+                        <input type="number" name="price" id="price" step="0.01">
                     </div>
                 </div>
                 <div class="row mt-3">
@@ -46,6 +47,14 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col">
+                        <label for="type">Inserisci il genere</label>
+                    </div>
+                    <div class="col">
+                        <input type="text" name="type" id="type">
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col">
                         <label for="sale_date">Inserisci la data di uscita</label>
                     </div>
                     <div class="col">
@@ -54,7 +63,7 @@
                 </div>
                 <div class="row mt-5">
                     <div class="col text-center">
-                        <button>INVIA</button>
+                        <button type="submit">INVIA</button>
                     </div>
                 </div>
             </form>

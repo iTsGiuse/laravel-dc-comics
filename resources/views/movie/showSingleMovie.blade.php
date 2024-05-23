@@ -3,7 +3,7 @@
 @section('main')
     <section id="show-single-movie">
         <div class="container">
-            <div class="row">
+            <div class="row mt-5">
                 <div class="col">
                     <div class="card">
                         <img src="{{$movies->thumb}}" class="card-img-top" alt="{{$movies->title}}">
