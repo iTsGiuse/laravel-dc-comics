@@ -18,21 +18,21 @@
 <body>
     <header>
         <div class="container">
-            <div class="row justify-content-between align-items-center py-2">
+            <div class="row  align-items-center py-2">
                 <div class="col-2">
                     <img src="{{Vite::asset('resources/img/dc-logo.png') }}" href="/" alt="">
                 </div>
-                <div class="col-4">
-                    <div class="d-flex">
+                <div class="col">
+                    <div class="d-flex justify-content-end">
                         <ul>
                             <li class="nav-item">
-                                <a href="/">Home</a>
+                                <a class="{{ Request::is('/') ? 'nascondi' : '' }}" href="/">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a href="/movies">Movies</a>
+                                <a class="{{ Request::is('movies') ? 'nascondi' : '' }}" href="/movies">Movies</a>
                             </li>
                             <li class="nav-item">
-                                <a href="/movies/create">Aggiungi</a>
+                                <a class="{{ Request::is('movies/create') ? 'nascondi' : '' }}" href="/movies/create">Aggiungi</a>
                             </li>
                         </ul>
                     </div>
