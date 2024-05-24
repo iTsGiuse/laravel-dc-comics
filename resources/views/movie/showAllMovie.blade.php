@@ -16,6 +16,7 @@
                             <p class="card-text">{{$movie->type}}</p>
                             <p class="card-text">{{$movie->price}}€</p>
                             <p><a href="{{ route('movies.show', ['movie' => $movie->id]) }}">scopri la trama</a></p>
+                            <p><a href="{{ route('movies.edit', ['movie' => $movie->id]) }}">modifica</a></p>
                         </div>
                     </div>
                 </div>

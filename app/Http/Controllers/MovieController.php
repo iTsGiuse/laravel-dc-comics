@@ -82,7 +82,13 @@ class MovieController extends Controller
      */
     public function edit($id)
     {
-        //
+        $movies = movie::find($id);
+
+        $data = [
+            'movie' => $movies
+        ];
+
+        return view('movie.editMovie', $data);
     }
 
     /**
@@ -94,7 +100,13 @@ class MovieController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $movieModified = movie::findOrFail($id);
+        $dataUpdated = $request->all();
+        $movieModified->fill($dataUpdated);
+        $movieModified->save($dataUpdated);
+
+        return redirect()->route('movies.show', ['movie' => $movieModified->id]);
+
     }
 
     /**
