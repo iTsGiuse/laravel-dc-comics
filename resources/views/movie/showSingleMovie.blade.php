@@ -10,6 +10,10 @@
                         <div class="card-body">
                             <h5 class="card-title text-center">{{$movies->title}}</h5>
                             <p class="card-text">{{$movies->description}}</p>
+                            <p class="card-text">{{$movie->series}}</p>
+                            <p class="card-text">{{$movie->sale_date}}</p>
+                            <p class="card-text">{{$movie->type}}</p>
+                            <p class="card-text">{{$movie->price}}€</p>
                         </div>
                     </div>
                 </div>
