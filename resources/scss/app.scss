@@ -1,10 +1,17 @@
 @use './partials/createMovie';
 @use './partials/mainHome';
+@use './partials/mainShowAllFilm';
 @import '~bootstrap/scss/bootstrap';
 
 
 header{
 background-color: white;
+border-bottom: 1px solid black;
+height: 120px;
+
+    img{
+        height: 75px !important;
+    }
 
     ul{
         display: flex;
@@ -32,18 +39,12 @@ background-color: white;
     }
 }
 
-.card{
-    height: 100%;
-    width: 100%;
-
+main{
+    background-color: #303030;
+    height: calc(100vh - (120px + 80px));
+    overflow-y: scroll;
 }
 
-.card-img-top{
-    position: relative;
-}
-
-#btn-edit{
-    position: absolute;
-    top: 1%;
-    right: 3%;
+header{
+    height: 80px;
 }

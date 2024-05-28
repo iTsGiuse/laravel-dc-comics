@@ -51,7 +51,7 @@ class MovieController extends Controller
                 'series' => 'nullable|min:5|max:50',
                 'sale_date' => 'required',
                 'type' => 'required|min:5|max:50',
-                'price' => 'required|decimal:2|min:1|max:5000'
+                'price' => 'required|numeric|min:1|max:5000'
             ],
             [
                 'title.required' => 'Il titolo è obbligatorio',

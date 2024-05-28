@@ -3,6 +3,11 @@
 @section('main')
     <section id="edit-movie">
         <div class="container">
+            <div class="row mt-3">
+                <div class="col text-center">
+                    <h1>Modifica: {{$movie->title}}</h1>
+                </div>
+            </div>
             <form action="{{ route('movies.update', ['movie' => $movie->id]) }}" method="POST">
                 @csrf
                 @method("PUT")
