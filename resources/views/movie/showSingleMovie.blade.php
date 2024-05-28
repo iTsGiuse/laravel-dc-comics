@@ -6,10 +6,10 @@
             <div class="row mt-5">
                 <div class="col">
                     <div class="card">
-                        <img src="{{$movies->thumb}}" class="card-img-top" alt="{{$movies->title}}">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">{{$movies->title}}</h5>
-                            <p class="card-text">{{$movies->description}}</p>
+                        <img src="{{$movie->thumb}}" class="card-img-top" alt="{{$movie->title}}">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">{{$movie->title}}</h5>
+                            <p class="card-text">{{$movie->description}}</p>
                             <p class="card-text">{{$movie->series}}</p>
                             <p class="card-text">{{$movie->sale_date}}</p>
                             <p class="card-text">{{$movie->type}}</p>
@@ -18,7 +18,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt-5">
+            <div class="row mt-5 mb-5">
                 <div class="col text-center">
                     <form action="/movies">
                         <button type="submit">Torna indietro</button>

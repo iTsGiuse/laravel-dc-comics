@@ -68,7 +68,7 @@ class MovieController extends Controller
         $movies = movie::find($id);
 
         $data = [
-            'movies' => $movies
+            'movie' => $movies
         ];
 
         return view('movie.showSingleMovie', $data);
