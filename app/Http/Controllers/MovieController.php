@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\movie;
+use Illuminate\Support\Facades\Validator;
 
 class MovieController extends Controller
 {
@@ -42,6 +43,37 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
+        
+        $validated = $request->validate([
+                'title' => 'required|min:5|max:50',
+                'description' => 'nullable|min:50|max:5000',
+                'thumb' => 'required',
+                'series' => 'nullable|min:5|max:50',
+                'sale_date' => 'required',
+                'type' => 'required|min:5|max:50',
+                'price' => 'required|decimal:2|min:1|max:5000'
+            ],
+            [
+                'title.required' => 'Il titolo è obbligatorio',
+                'title.min' => 'Il titolo deve essere composto da almeno cinque caratteri',
+                'title.max' => 'Il titolo non può avere più di cinquanta caratteri',
+                'description.required' => 'La descrizione è obbligatoria',
+                'description.min' => 'La descrizione deve essere composta da almeno cinquanta caratteri',
+                'description.max' => 'La descrizione non può avere più di cinquemila caratteri',
+                'thumb.required' => 'Il link per la foto è obbligatorio',
+                'series.min' => 'La serie deve essere composto da almeno cinque caratteri',
+                'series.max' => 'La serie non può avere più di cinquanta caratteri',
+                'type.required' => 'Il genere è obbligatorio',
+                'type.min' => 'Il genere deve essere composto da almeno cinque caratteri',
+                'type.max' => 'Il genere non può avere più di cinquanta caratteri',
+                'price.required' => 'Il prezzo è obbligatorio',
+                'price.numeric' => 'Il prezzo deve essere un numero',
+                'price.min' => 'Il prezzo non può essere inferiore a uno',
+                'price.max' => 'Il prezzo non può essere superiore a cinquemila',
+                'sale_date.required' => 'La data è di pubblicazione è obbligatoria'
+            ]
+    );
+
         $formData= $request->all();
         
         $newMovie = new movie();
@@ -101,6 +133,7 @@ class MovieController extends Controller
     public function update(Request $request, $id)
     {
         $movieModified = movie::findOrFail($id);
+
         $dataUpdated = $request->all();
         $movieModified->fill($dataUpdated);
         $movieModified->save($dataUpdated);
@@ -121,5 +154,42 @@ class MovieController extends Controller
         $movie->delete();
 
         return redirect()->route('movies.index');
+    }
+
+    private function validation($data)
+    {
+        $validator = Validator::make(
+            $data,
+            [
+                'title' => 'required|min:5|max:50',
+                'description' => 'nullable|min:50|max:5000',
+                'thumb' => 'required',
+                'series' => 'nullable|min:5|max:50',
+                'sale_date' => 'required',
+                'type' => 'required|min:5|max:50',
+                'price' => 'required|decimal:2|min:1|max:5000'
+            ],
+            [
+                'title.required' => 'Il titolo è obbligatorio',
+                'title.min' => 'Il titolo deve essere composto da almeno cinque caratteri',
+                'title.max' => 'Il titolo non può avere più di cinquanta caratteri',
+                'description.required' => 'La descrizione è obbligatoria',
+                'description.min' => 'La descrizione deve essere composta da almeno cinquanta caratteri',
+                'description.max' => 'La descrizione non può avere più di cinquemila caratteri',
+                'thumb.required' => 'Il link per la foto è obbligatorio',
+                'series.min' => 'La serie deve essere composto da almeno cinque caratteri',
+                'series.max' => 'La serie non può avere più di cinquanta caratteri',
+                'type.required' => 'Il genere è obbligatorio',
+                'type.min' => 'Il genere deve essere composto da almeno cinque caratteri',
+                'type.max' => 'Il genere non può avere più di cinquanta caratteri',
+                'price.required' => 'Il prezzo è obbligatorio',
+                'price.numeric' => 'Il prezzo deve essere un numero',
+                'price.min' => 'Il prezzo non può essere inferiore a uno',
+                'price.max' => 'Il prezzo non può essere superiore a cinquemila',
+                'sale_date.required' => 'La data è di pubblicazione è obbligatoria'
+            ]
+        )->validate();
+        
+        return $validator;
     }
 }
