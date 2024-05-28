@@ -134,9 +134,10 @@ class MovieController extends Controller
     {
         $movieModified = movie::findOrFail($id);
 
-        $dataUpdated = $request->all();
-        $movieModified->fill($dataUpdated);
-        $movieModified->save($dataUpdated);
+        $formData = $request->all();
+        $this->validation($formData);
+        $movieModified->fill($formData);
+        $movieModified->save($formData);
 
         return redirect()->route('movies.show', ['movie' => $movieModified->id]);
 
@@ -167,7 +168,7 @@ class MovieController extends Controller
                 'series' => 'nullable|min:5|max:50',
                 'sale_date' => 'required',
                 'type' => 'required|min:5|max:50',
-                'price' => 'required|decimal:2|min:1|max:5000'
+                'price' => 'required|numeric|min:1|max:5000'
             ],
             [
                 'title.required' => 'Il titolo è obbligatorio',
